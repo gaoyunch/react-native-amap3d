@@ -10,13 +10,14 @@
     "maps",
     "mapview"
   ],
-  "main": "lib/js",
+  "main": "src",
   "files": [
     "lib/js",
     "lib/android/src",
     "lib/android/build.gradle",
     "lib/ios",
-    "react-native.config.js"
+    "react-native.config.js",
+    "src"
   ],
   "repository": {
     "type": "git",
