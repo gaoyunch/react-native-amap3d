@@ -205,4 +205,10 @@ internal class AMapViewManager : ViewGroupManager<AMapView>() {
             "map_rotate_no_center" -> view.setLocationType(MyLocationStyle.LOCATION_TYPE_MAP_ROTATE_NO_CENTER)
         }
     }
+    
+    @ReactProp(name = "gestureScaleByMapCenter")
+    fun setGestureScaleByMapCenter(view: AMapView, enabled: Boolean) {
+        view.map.uiSettings.isGestureScaleByMapCenter = enabled
+    }
+    
 }
