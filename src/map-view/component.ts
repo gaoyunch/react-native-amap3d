@@ -2,7 +2,7 @@
  * Base component, contains some utils
  */
 import { PureComponent } from "react";
-import { findNodeHandle, UIManager, Platform } from "react-native";
+import { findNodeHandle, NativeModules, Platform } from "react-native";
 
 /**
  * @ignore
@@ -19,10 +19,14 @@ export default class Component<P> extends PureComponent<P> {
    * Call native method
    */
   call(name: string, params?: any[]) {
-    const handle = findNodeHandle(this);
-    if (handle) {
-      const command = UIManager.getViewManagerConfig(this.nativeComponent).Commands[name];
-      UIManager.dispatchViewManagerCommand(handle, command, params);
+    try {
+      const handle = findNodeHandle(this);
+      if (handle) {
+        const command = NativeModules.UIManager.getViewManagerConfig(this.nativeComponent).Commands[name];
+        NativeModules.UIManager.dispatchViewManagerCommand(handle, command, params);
+      }
+    } catch (error) {
+      console.warn('error: ', error);
     }
   }
 
